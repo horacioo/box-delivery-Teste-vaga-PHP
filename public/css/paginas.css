@@ -18,7 +18,7 @@ h1,h2,h3,h4{
 }
 nav{
     margin-bottom: 21px;
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
 }
 nav ul{
@@ -62,7 +62,7 @@ nav ul li a{}
     width: 101%;
 }
 .filmes li div{
-    height: 400px;
+    height: 417px;
     position: relative;
     border: 1px dotted #b1b1b1;
     overflow: hidden;
@@ -72,8 +72,17 @@ nav ul li a{}
     height: 22px;
     border-radius: 9px;
     padding: 8px;
-    transform: translateY(15px);
+    left: 50%;
+    transform: translate(-50%,8px);
     z-index: 3;
-    border: none;
+    background-color: #d6d6d661;
+    border: 1px solid #c1c1c1;
 }
+
+.filmes .select label{
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #717171;
+}
+
 input[type='radio']{visibility:hidden;}

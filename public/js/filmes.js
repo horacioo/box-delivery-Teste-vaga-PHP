@@ -1,9 +1,30 @@
 $(document).ready(function (){
-    getFilmes();
-}
+       getFilmes();
+        //$(".reunioes").delegate( ".btnAcessoAtividade", "click", clickBtnAcessoAtividade ) 
+       $(".filmes").delegate( ".like", "click", info );
+      }
 );
+/*******************************/
+function info(){
 
+  var like = $(this).val();
+  var filme = $(this).siblings(".filmeCod").val();
+  var user = $('#Me').val();
+  console.log('\r \n like ='+like+"\r \n filme ="+filme+"\r \n usuario ="+user);
 
+  if(parseInt(like)==0){$(this).parent().parent().css('background-color','#ff9900'); }
+  if(parseInt(like)==1){$(this).parent().parent().css('background-color','#27ff00'); }
+
+  $.ajax({
+    method:'GET',
+    url:'http://localhost/testeEmprego/public/api/filmes/favoritar',
+    data:{'filme_id':filme, 'user_id':user, 'like':like},
+    success:function(response){console.log("deu certo");},
+    error:function(response){console.log('algo deu errado, rever o envio '+response)}
+  });
+
+}
+/*******************************/
 function getFilmes(){
     console.log('chamando os filmes');
     var endereco="http://localhost/testeEmprego/storage/app/public/";
@@ -21,7 +42,15 @@ function getFilmes(){
                        +""+response[i].ano+""
                        +"<p>"+response[i].sinopse+"</p>"
                        +"<div><img src='"+endereco+"imagens/"+response[i].imagem+"' alt=''></div>"
-                       +"<dic class='select'></div>"
+                       +"<div class='select'>"
+                            +"<form class='likex'>"
+                                +"<input type='hidden' class='filmeCod' name='filmeCod' value='"+response[i].id+"'>"
+                                +"<label for='gostei_"+i+"'>gostei </label>"
+                                    +"<input id='gostei_"+i+"'    class='like' type='radio' value='1' name='like'>"
+                                +"<label for='naoGostei_"+i+"'>não gostei</label>"
+                                    +"<input id='naoGostei_"+i+"' class='like' type='radio' value='0' name='like'>"
+                            +"</form>"
+                       +"</div>"
                        +"</li>"
                        );
                }

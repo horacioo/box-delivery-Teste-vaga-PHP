@@ -1,6 +1,6 @@
 <html>
   <head>
-      <title>{{ $titulo or "seja bem vindo" }}</title>
+      <title> @yield('titulo')</title>
       <link rel="stylesheet" href="<?php echo asset('css/paginas.css')?>" type="text/css">
   </head>
 <body>
@@ -14,7 +14,8 @@
     <main>
        @yield('conteudo')
     </main>
-    <p>{{$f->sinopse}}</p>
+    
+    
     <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="

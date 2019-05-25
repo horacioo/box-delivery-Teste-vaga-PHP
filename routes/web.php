@@ -17,8 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
+/*
 Route::get('/home', 'HomeController@index')->name('home');
 ///Route::get('/filmes','filmesCtrl@lista');
 Route::get('/filmes','filmesCtrl@index');
 Route::get('/filmes/cria','filmesCtrl@cria');
 Route::post('/filmes/cadastrar','filmesCtrl@cadastrar');
+*/
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/filmes','filmesCtrl@index');
+    Route::get('/filmes/cria','filmesCtrl@cria');
+    Route::post('/filmes/cadastrar','filmesCtrl@cadastrar');
+    Route::get('/user',function(){return Auth::user();});
+});
