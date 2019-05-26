@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('css2')
 </head>
 <body>
     <div id="app">
@@ -49,6 +50,12 @@
                                 </li>
                             @endif
                         @else
+
+                            <li class="nav-item"><a href="{{ url('filmes/cria') }}" class="nav-link">contribua com um filme</a></li>
+                            <li class="nav-item"><a href="{{ url('filmes')}}" class="nav-link">lista de filmes</a></li>
+                            <li class="nav-item"><a href="{{ url('filmes/favoritos')}}" class="nav-link">Meus filmes favoritos</a></li>
+                            
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -76,5 +83,6 @@
             @yield('content')
         </main>
     </div>
+    @yield('rodape')
 </body>
 </html>

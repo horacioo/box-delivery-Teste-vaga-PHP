@@ -9,7 +9,7 @@ body{
 }
 
 main{
-    padding-top: 41px;
+    padding-top: 1px;
 }
 h1,h2,h3,h4{
     text-align: center;
@@ -17,12 +17,11 @@ h1,h2,h3,h4{
     color: grey;
 }
 nav{
-    margin-bottom: 21px;
+    margin-bottom: 40px;
     /* position: absolute; */
     width: 100%;
 }
 nav ul{
-    background-color: #d0cfcf;
     padding-left: 2vw;
     display: flex;
     flex-direction: row;
@@ -69,7 +68,7 @@ nav ul li a{}
     border-radius: 16px;
 }
 .filmes .select{
-    height: 22px;
+    height: 40px;
     border-radius: 9px;
     padding: 8px;
     left: 50%;

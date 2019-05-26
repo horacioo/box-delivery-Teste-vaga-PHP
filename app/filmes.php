@@ -12,4 +12,9 @@ class filmes extends Model
     public function Generos(){
         return $this->belongsTo('App\genero');
     }
+
+    public function Like(){
+        return $this->hasMany('App\user_filme','filme_id');
+        ///return $this->hasMany('App\cadastro','cargo_id');
+    }
 }

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css2')
+<link rel="stylesheet" href="<?php echo asset('css/paginas.css')?>" type="text/css">
+@stop
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

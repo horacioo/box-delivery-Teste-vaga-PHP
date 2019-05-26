@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Route::middleware(['auth'])->group(function () {
         Route::get("/filmes",'filmesCtrl@all');
         Route::get("/filmes/favoritar",'filmesCtrl@favoritar');
+        Route::get('/filmes/favoritos','user_filmeCtrl@favoritosApi');
 //});

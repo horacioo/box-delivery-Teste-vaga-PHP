@@ -18,6 +18,14 @@ class filmesCtrl extends Controller
 
 
 
+    /*public function favoritos(Request $Request, user_filme $uf,filmes $filmes){
+        $auth =  Auth::user();
+        $listaFilmes = $uf->all();//where('user_id',$auth->id)->get();
+        return view('filmes.favoritos',compact('listaFilmes'));
+    }*/
+
+
+
     public function favoritar(Request $Request,user_filme $uf){
              $x = $uf->where('user_id',$Request->user_id)->where('filme_id',$Request->filme_id)->first('id');
              if($x != null ){ $x->like=$Request->like;  $x->save();}else{ $uf->create($Request->all()); }
