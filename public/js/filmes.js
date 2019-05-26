@@ -27,7 +27,7 @@ function info(){
 /*******************************/
 function getFilmes(){
     console.log('chamando os filmes');
-    var endereco="http://localhost/testeEmprego/storage/app/public/";
+    
     $.ajax({
       method:'GET',  
       url:'http://localhost/testeEmprego/public/api/filmes',
@@ -41,7 +41,7 @@ function getFilmes(){
                        +"<h3>"+response[i].nome+"</h3>"
                        +""+response[i].ano+""
                        +"<p>"+response[i].sinopse+"</p>"
-                       +"<div><img src='"+endereco+"imagens/"+response[i].imagem+"' alt=''></div>"
+                       +"<div><img src='"+endereco+""+response[i].imagem+"' alt=''></div>"
                        +"<div class='select'>"
                             +"<form class='likex'>"
                                 +"<input type='hidden' class='filmeCod' name='filmeCod' value='"+response[i].id+"'>"

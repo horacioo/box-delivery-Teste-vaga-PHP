@@ -1,8 +1,15 @@
 @extends('layouts.app')
 
+
+@section('css2')
+<link rel="stylesheet" href="<?php echo asset('css/reset.css')?>" type="text/css">
+<link rel="stylesheet" href="<?php echo asset('css/CriaPaginas.css')?>" type="text/css">
+@stop
+
+
 @section('content')
 
-    <div class='criaFilmes'>
+    <div id='criaFilmes'>
             <form action="{{url('filmes/cadastrar')}}" method='post'  enctype="multipart/form-data">
             {{ csrf_field() }}
             <p>

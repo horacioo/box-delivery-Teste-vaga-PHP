@@ -30,5 +30,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/filmes','filmesCtrl@index');
     Route::get('/filmes/cria','filmesCtrl@cria');
     Route::post('/filmes/cadastrar','filmesCtrl@cadastrar');
+    Route::get('/filmes/favoritos','user_filmeCtrl@favoritos');
+    Route::get('/filmes/generos','generoCtrl@cria');
+    Route::post('/filmes/generos/criar','generoCtrl@CriaGenero');
     Route::get('/user',function(){return Auth::user();});
 });

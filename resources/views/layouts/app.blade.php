@@ -51,6 +51,7 @@
                             @endif
                         @else
 
+                            <li class="nav-item"><a href="{{ url('filmes/generos') }}" class="nav-link">criar um genero de filme</a></li>
                             <li class="nav-item"><a href="{{ url('filmes/cria') }}" class="nav-link">contribua com um filme</a></li>
                             <li class="nav-item"><a href="{{ url('filmes')}}" class="nav-link">lista de filmes</a></li>
                             <li class="nav-item"><a href="{{ url('filmes/favoritos')}}" class="nav-link">Meus filmes favoritos</a></li>

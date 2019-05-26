@@ -13,19 +13,6 @@ use Illuminate\Support\Facades\Auth;
 class filmesCtrl extends Controller
 {
 
-    var $url = "http://localhost/testeEmprego/storage/app/public/";
-
-
-
-
-    /*public function favoritos(Request $Request, user_filme $uf,filmes $filmes){
-        $auth =  Auth::user();
-        $listaFilmes = $uf->all();//where('user_id',$auth->id)->get();
-        return view('filmes.favoritos',compact('listaFilmes'));
-    }*/
-
-
-
     public function favoritar(Request $Request,user_filme $uf){
              $x = $uf->where('user_id',$Request->user_id)->where('filme_id',$Request->filme_id)->first('id');
              if($x != null ){ $x->like=$Request->like;  $x->save();}else{ $uf->create($Request->all()); }
@@ -37,9 +24,9 @@ class filmesCtrl extends Controller
     public function index(filmes $filmes){
         $user   = Auth::user();//usar apenas pela web, não pela api
         $titulo ="lista de filmes!!!!";
+        $url = $filmes->pastaImagens;
         $filmes = $filmes->all();
-        $url= $this->url;
-        return view('filmes.public.filmesHome',compact('titulo','filmes','url','user'));
+        return view('filmes.public.filmesHome',compact('titulo','filmes','user','url'));
     }
 
 
@@ -51,10 +38,19 @@ class filmesCtrl extends Controller
 
     public function cria(genero $genero){
         $gen = $genero->all();
-        $ano =['2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2018']; 
+        $ano  = $this->Epocas();
         return view('filmes.admin.criafilmes',compact('gen','ano'));
     }
 
+    private function Epocas(){
+        $epocas = array(); 
+        $year = "1895";
+        while($year <= date("Y")):
+        $epocas[]=$year;
+        $year++;
+        endwhile;
+        return $epocas;
+    }
    
 
     public function All(filmes $filmes){
