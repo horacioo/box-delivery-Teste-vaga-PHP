@@ -11,19 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', function () { return view('filmes.admin.login'); });
+//Route::get('/', function () { return view('welcome'); });
 
 Auth::routes();
 
-/*
-Route::get('/home', 'HomeController@index')->name('home');
-///Route::get('/filmes','filmesCtrl@lista');
-Route::get('/filmes','filmesCtrl@index');
-Route::get('/filmes/cria','filmesCtrl@cria');
-Route::post('/filmes/cadastrar','filmesCtrl@cadastrar');
-*/
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
