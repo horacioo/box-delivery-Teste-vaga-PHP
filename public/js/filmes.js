@@ -27,8 +27,21 @@ function info(){
 /*******************************/
 function getFilmes(){
     console.log('chamando os filmes');
-    
+    var TokemMovies = localStorage.getItem("MyMoviesToken");
+    console.log(TokemMovies);
+   
+
+    $.ajaxSetup({
+      headers: {
+          'Accept' : 'application/json',
+          'Authorization' : 'Bearer '+ TokemMovies ,
+      }
+   });
+
+
+
     $.ajax({
+    
       method:'GET',  
       url:'http://localhost/testeEmprego/public/api/filmes',
       success:function(response){
