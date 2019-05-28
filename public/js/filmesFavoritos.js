@@ -1,12 +1,22 @@
 $('document').ready(function(){ 
          carregaFilmes();
+         ///setInterval(carregaFilmes,1000);
      }
 );
 
 
 
 function carregaFilmes(){
+    $('.favoritosLista') .children().remove();
     console.log("teste");
+    var TokemMovies = localStorage.getItem("MyMoviesToken");
+    $.ajaxSetup({
+        headers: {
+            'Accept' : 'application/json',
+            'Authorization' : 'Bearer '+ TokemMovies ,
+        }
+     });
+
     $.ajax({
         method:'GET',
         url:"http://localhost/testeEmprego/public/api/filmes/favoritos",

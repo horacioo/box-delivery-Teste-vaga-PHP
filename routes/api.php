@@ -16,12 +16,6 @@ Route::prefix('auth')->group(function() {
     Route::middleware('auth:api')->group(function() { Route::post('logout', 'AutenticadorControlador@logout');});
 });
 
-/***********************************/
-Route::get('produtos', 'ProdutosControlador@index')->middleware('auth:api');
-/***********************************/
-
-
-
 
         Route::get("/filmes",'filmesCtrl@all')->middleware('auth:api');
         Route::get("/filmes/favoritar",'filmesCtrl@favoritar')->middleware('auth:api');
