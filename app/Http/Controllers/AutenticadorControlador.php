@@ -29,7 +29,8 @@ class AutenticadorControlador extends Controller
         event(new EventNovoRegistro($user));
 
         return response()->json([
-            'res'=>'Usuario criado com sucesso'
+            'res'=>'Usuario criado com sucesso',
+             'cod'=>201
         ], 201);
     }
 
@@ -56,7 +57,8 @@ class AutenticadorControlador extends Controller
         $token = $user->createToken('Token de acesso')->accessToken;
 
         return response()->json([
-            'token' => $token
+            'token' => $token,
+            'AuthId'=>$user->id
         ], 200);
     }
 

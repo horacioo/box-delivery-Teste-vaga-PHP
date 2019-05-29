@@ -8,15 +8,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
-/***********************************/
+/*******************************************************************/
 Route::prefix('auth')->group(function() {
     Route::post('registro', 'AutenticadorControlador@registro');    
     Route::post('login', 'AutenticadorControlador@login');
     Route::get('registro/ativar/{id}/{token}','AutenticadorControlador@ativarregistro');
     Route::middleware('auth:api')->group(function() { Route::post('logout', 'AutenticadorControlador@logout');});
 });
-
-
-        Route::get("/filmes",'filmesCtrl@all')->middleware('auth:api');
-        Route::get("/filmes/favoritar",'filmesCtrl@favoritar')->middleware('auth:api');
-        Route::get('/filmes/favoritos','user_filmeCtrl@favoritosApi')->middleware('auth:api');
+/*******************************************************************/
+Route::prefix('filmes')->group(function(){
+    //Route::get("/",'filmesCtrl@all')->middleware('auth:api');
+    Route::get("/favoritar",'filmesCtrl@favoritar');
+    Route::get('/favoritos/{usuario_id}','user_filmeCtrl@favoritosApi')->middleware('auth:api');
+});
+Route::get("/filmes",'filmesCtrl@all');//->middleware('auth:api');
+/*******************************************************************/

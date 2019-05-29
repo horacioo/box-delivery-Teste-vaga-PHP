@@ -26,7 +26,7 @@ class filmesCtrl extends Controller
         $titulo ="lista de filmes!!!!";
         $url = $filmes->pastaImagens;
         $filmes = $filmes->all();
-        return view('filmes.public.filmesHome',compact('titulo','filmes','user','url'));
+        return view('movies.filmes',compact('titulo','filmes','user','url'));
     }
 
 
@@ -39,12 +39,12 @@ class filmesCtrl extends Controller
     public function cria(genero $genero){
         $gen = $genero->all();
         $ano  = $this->Epocas();
-        return view('filmes.admin.criafilmes',compact('gen','ano'));
+        return view('movies.adm.criafilmes',compact('gen','ano'));
     }
 
     private function Epocas(){
         $epocas = array(); 
-        $year = "1895";
+        $year = "1920";
         while($year <= date("Y")):
         $epocas[]=$year;
         $year++;
@@ -53,11 +53,37 @@ class filmesCtrl extends Controller
     }
    
 
+
+
+
+
     public function All(filmes $filmes){
           $filme = $filmes->all()->sortBy('created_at');
           $pasta =  Storage::allFiles('app');//Storage::directories();
-          return response()->json($filme);///gerando o json
+          $i = 0;
+          $dados=array();
+          foreach($filme as $f):
+            $dados[$i]['id']=$f->id;
+            $dados[$i]['nome']=$f->nome;
+            $dados[$i]['sinopse']=$f->sinopse;
+            $dados[$i]['genero']=$f->Generos->genero;
+            $dados[$i]['ano']=$f->ano;
+            $dados[$i]['imagem']=$f->imagem;
+            $i++;
+          endforeach;
+          return response()->json($dados);//return response()->json($filme);///gerando o json
     }
+
+
+
+
+
+
+
+
+
+
+
 
 
     public function cadastrar(Request $Request,filmes $filmes){

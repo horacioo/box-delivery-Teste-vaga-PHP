@@ -16,16 +16,16 @@ class user_filmeCtrl extends Controller
 
 
     public function favoritos(user_filme $user_filme,filmes $filmes){
-        $auth =  Auth::user();
-        $id  = $auth->id;
+        $id  = "";
         $url = $filmes->pastaImagens;
-        return view('filmes.favoritos',compact('id','url'));
+        return view('movies.favoritos',compact('id','url'));
     }
 
 
 
-    public function favoritosApi(user_filme $user_filme,filmes $filmes ){
-        $usuario =1;
+    public function favoritosApi( user_filme $user_filme,filmes $filmes,$usuario_id){
+
+        $usuario =$usuario_id;
         $lista = $user_filme->where('user_id',$usuario)->where('like',1)->get();
         $arrayRetorno=array();
         $i=0;

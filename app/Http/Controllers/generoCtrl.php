@@ -9,7 +9,7 @@ class generoCtrl extends Controller
 {
     public function cria(genero $genero, Request $Request){
        $all = $genero->all(); 
-       return view('filmes.admin.criaGenero',compact('all'));
+       return view('movies.adm.criaGenero',compact('all'));
     }
 
 

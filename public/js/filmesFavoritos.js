@@ -10,18 +10,22 @@ function carregaFilmes(){
     $('.favoritosLista') .children().remove();
     console.log("teste");
     var TokemMovies = localStorage.getItem("MyMoviesToken");
+    var usuario_id = localStorage.getItem('auth');
+
     $.ajaxSetup({
         headers: {
             'Accept' : 'application/json',
             'Authorization' : 'Bearer '+ TokemMovies ,
         }
      });
+  
 
+   
     $.ajax({
         method:'GET',
-        url:"http://localhost/testeEmprego/public/api/filmes/favoritos",
+        url:"http://localhost/testeEmprego/public/api/filmes/favoritos/"+usuario_id,
+        
         success:function(response){
-            
             for(var i = 0; i< response.length; i++) {
                   console.log(response[i].nome);
                   $('.favoritosLista').prepend(
@@ -31,6 +35,7 @@ function carregaFilmes(){
                       +"</li>"
                   );
             }
+
         },
         error:function(response){ console.log(e.message); }
     });

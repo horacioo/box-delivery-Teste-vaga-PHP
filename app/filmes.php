@@ -10,7 +10,7 @@ class filmes extends Model
     protected $fillable=['nome','sinopse','imagem','ano','generos_id',''];
 
     public $pastaImagens="http://localhost/testeEmprego/storage/app/public/imagens/";
-
+    
 
     public function Generos(){
         return $this->belongsTo('App\genero');

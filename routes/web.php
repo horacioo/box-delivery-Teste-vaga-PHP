@@ -12,20 +12,28 @@
 */
 
 
-Route::get('/', function () { return view('filmes.admin.login'); });
-//Route::get('/', function () { return view('welcome'); });
-
+Route::get('/', function () { return view('movies.login');/*return view('filmes.admin.login');*/ });
+Route::get('/cadastro', function () { return view('movies.cadastro');/*return view('filmes.admin.login');*/ });
 Auth::routes();
 
 
-
+Route::prefix('filmes')->group(function(){
+      Route::get('/','filmesCtrl@index');
+      Route::get('/favoritos','user_filmeCtrl@favoritos');
+      Route::get('/cria','filmesCtrl@cria');
+      Route::post('/cadastrar','filmesCtrl@cadastrar');
+      Route::get('/generos','generoCtrl@cria');
+      Route::post('/generos/criar','generoCtrl@CriaGenero');
+});
+    
+/*
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
-    Route::get('/filmes','filmesCtrl@index');
-    Route::get('/filmes/cria','filmesCtrl@cria');
-    Route::post('/filmes/cadastrar','filmesCtrl@cadastrar');
-    Route::get('/filmes/favoritos','user_filmeCtrl@favoritos');
-    Route::get('/filmes/generos','generoCtrl@cria');
-    Route::post('/filmes/generos/criar','generoCtrl@CriaGenero');
+
+
+
+   ;
+
     Route::get('/user',function(){return Auth::user();});
 });
+*/
